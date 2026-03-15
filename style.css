@@ -713,7 +713,7 @@ a:focus-visible {
 .strip-track {
   display: inline-flex;
   gap: var(--space-6);
-  animation: marquee 18s linear infinite;
+  animation: marquee 20s linear infinite;
   font-family: var(--font-display);
   font-size: var(--text-md);
   letter-spacing: 0.08em;
