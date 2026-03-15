@@ -931,6 +931,41 @@ a:focus-visible {
   margin-top: 2px;
 }
 
+/* 9.1 SEÇÃO SOBRE - CARROSSEL DE IMAGENS */
+.img-carousel {
+  overflow: hidden;
+  width: 100%;
+  padding-block: var(--space-2);
+  margin-bottom: var(--space-6);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track {
+  display: inline-flex;
+  gap: var(--space-4);
+  animation: marquee-carousel 45s linear infinite;
+  width: max-content;
+}
+
+.carousel-track img {
+  height: 120px;
+  width: auto;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes marquee-carousel {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { animation: none; }
+}
+
 
 /* ==================================================
    10. SEÇÃO TREINADOR
@@ -1061,10 +1096,68 @@ a:focus-visible {
 
 
 /* ==================================================
+   10.5. SEÇÃO APOIADORES
+   ================================================== */
+.section-apoiadores {
+  background: var(--clr-bg-secondary);
+  position: relative;
+}
+
+.section-apoiadores::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--clr-border);
+}
+
+.apoiadores-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.apoiador-card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  transition: all var(--transition-normal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  height: 100px;
+}
+
+.apoiador-card:hover {
+  border-color: var(--clr-border-accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.apoiador-card img {
+  max-width: 140px;
+  max-height: 60px;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+
+.apoiador-card:hover img {
+  opacity: 1;
+}
+
+/* ==================================================
    11. CTA STRIP
    ================================================== */
 .cta-strip {
-  background: var(--clr-bg-secondary);
+  background: var(--clr-bg-primary);
   border-top: 1px solid var(--clr-border);
   border-bottom: 1px solid var(--clr-border);
   padding-block: var(--space-16);
